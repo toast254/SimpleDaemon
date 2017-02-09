@@ -6,7 +6,7 @@ import time
 from AbstractDaemon import Daemon
 
 # log verbosity : CRITICAL, ERROR, WARNING, INFO, DEBUG
-logging.basicConfig(filename='myDaemon.log', level='DEBUG')
+logging.basicConfig(filename='MyDaemon.log', level='DEBUG')
 logger = logging.getLogger(__name__)
 
 
@@ -14,7 +14,7 @@ def do_something():
     logger.debug('I\'m alive !')
 
 
-class myDaemon(Daemon):
+class MyDaemon(Daemon):
 
     def run(self):
         while True:
@@ -27,7 +27,7 @@ def usage_help():
 
 
 if __name__ == '__main__':
-    daemon = BasicatDaemon('/tmp/myDaemon.pid')
+    daemon = BasicatDaemon('/tmp/MyDaemon.pid')
     if len(sys.argv) >= 2:
         if 'start' == sys.argv[1]:
             print('Starting daemon')
