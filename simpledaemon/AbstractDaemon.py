@@ -57,14 +57,18 @@ class Daemon:
     def delpid(self):
         os.remove(self.pidfile)
 
+    def check_pid(self):
+        """Check the daemon pidfile to see if the daemon runs"""
+        try:
+            with open(self.pidfile, mode='r') as pf:
+                return int(pf.read().strip())
+        except IOError:
+            logger.error('Can not read pidfile : ' + self.pidfile)
+        return None
+
     def start(self):
         """Start the daemon."""
-        try:  # Check for a pidfile to see if the daemon already runs
-            with open(self.pidfile, mode='r') as pf:
-                pid = int(pf.read().strip())
-        except IOError:
-            pid = None
-        if pid:
+        if self.check_pid():
             logger.info('pidfile ' + str(self.pidfile) + ' already exist. Daemon already running ?')
             sys.exit(1)
         # Start the daemon
@@ -73,13 +77,7 @@ class Daemon:
 
     def stop(self):
         """Stop the daemon."""
-        # Get the pid from the pidfile
-        try:
-            with open(self.pidfile, mode='r') as pf:
-                pid = int(pf.read().strip())
-        except IOError:
-            pid = None
-        if not pid:
+        if not self.check_pid():
             logger.info('pidfile ' + str(self.pidfile) + ' does not exist. Daemon not running ?')
             return  # not an error in a restart
         # Try killing the daemon process
@@ -92,6 +90,8 @@ class Daemon:
             if e.find('No such process') > 0:
                 if os.path.exists(self.pidfile):
                     os.remove(self.pidfile)
+                else:
+                    logger.warning('Can not find the pidfile : "' + pidfile + '" while a Daemon process runs')
             else:
                 logger.error(str(err.args))
                 sys.exit(1)
@@ -105,13 +105,7 @@ class Daemon:
         """Status of the daemon.
         :return True if running
         """
-        try:
-            with open(self.pidfile, mode='r') as pf:
-                if int(pf.read().strip()):  # Get the pid from the pidfile
-                    return True
-        except IOError:
-            pass
-        return False
+        return self.check_pid() is not None
 
     def run(self):
         """You should override this method when you subclass Daemon.
