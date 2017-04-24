@@ -16,6 +16,11 @@ def do_something():
 
 
 class MyDaemon(Daemon):
+    """An AbstractDaemon instance I named `MyDaemon`
+
+    run method is now implemented and call `do_something()`,
+    it's also called when the daemon is given `run-once` as parameter.
+    """
 
     def run(self):
         while True:
