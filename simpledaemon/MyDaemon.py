@@ -3,6 +3,7 @@
 
 import sys
 import time
+import logging
 from AbstractDaemon import Daemon
 
 # log verbosity : CRITICAL, ERROR, WARNING, INFO, DEBUG
@@ -27,16 +28,16 @@ def usage_help():
 
 
 if __name__ == '__main__':
-    daemon = BasicatDaemon('/tmp/MyDaemon.pid')
+    daemon = MyDaemon('/tmp/MyDaemon.pid')
     if len(sys.argv) >= 2:
         if 'start' == sys.argv[1]:
-            print('Starting daemon')
+            print('Starting MyDaemon')
             daemon.start()
         elif 'stop' == sys.argv[1]:
-            print('Stopping daemon')
+            print('Stopping MyDaemon')
             daemon.stop()
         elif 'restart' == sys.argv[1]:
-            print('Restarting daemon')
+            print('Restarting MyDaemon')
             daemon.restart()
         elif 'status' == sys.argv[1]:
             if daemon.status():
