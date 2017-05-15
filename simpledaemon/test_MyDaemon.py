@@ -3,7 +3,6 @@
 import sys
 import time
 import unittest
-import logging
 import MyDaemon
 
 
