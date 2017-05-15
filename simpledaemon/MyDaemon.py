@@ -3,6 +3,7 @@
 
 import sys
 import time
+import logging
 from AbstractDaemon import Daemon
 
 # log verbosity : CRITICAL, ERROR, WARNING, INFO, DEBUG
