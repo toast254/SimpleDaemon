@@ -43,11 +43,13 @@ class Daemon:
             sys.exit(1)
         # redirect standard file descriptors
         os.setsid()
-        # sys.stdin.flush()
+        if sys.stdin.isatty():
+            sys.stdin.flush()
         sys.stdout.flush()
         sys.stderr.flush()
         dev_null = os.open(os.devnull, os.O_RDWR)
-        os.dup2(dev_null, sys.stdin.fileno())
+        if sys.stdin.isatty():
+            os.dup2(dev_null, sys.stdin.fileno())
         os.dup2(dev_null, sys.stdout.fileno())
         os.dup2(dev_null, sys.stderr.fileno())
         # write pidfile
