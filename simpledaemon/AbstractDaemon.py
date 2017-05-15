@@ -42,7 +42,8 @@ class Daemon:
             logger.error('fork #2 failed : ' + str(err))
             sys.exit(1)
         # redirect standard file descriptors
-        sys.stdin.flush()
+        os.setsid()
+        # sys.stdin.flush()
         sys.stdout.flush()
         sys.stderr.flush()
         dev_null = os.open(os.devnull, os.O_RDWR)
