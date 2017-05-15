@@ -19,14 +19,16 @@ class TestAbstractDaemon(unittest.TestCase):
     def test_start(self):
         """Try to start a daemon.
         """
-        self.daemon.start()
+        with self.assertRaises(SystemExit) as cm:
+            self.daemon.start()
         self.assertTrue(self.daemon.status())
 
     @unittest.skipIf(sys.platform.startswith("win"), "not available on Windows")
     def test_stop(self):
         """Try to stop a daemon.
         """
-        self.daemon.start()
+        with self.assertRaises(SystemExit) as cm:
+            self.daemon.start()
         time.sleep(1)
         self.daemon.stop()
         self.assertFalse(self.daemon.status())
@@ -35,7 +37,8 @@ class TestAbstractDaemon(unittest.TestCase):
     def test_restart(self):
         """Try to restart a daemon.
         """
-        self.daemon.restart()
+        with self.assertRaises(SystemExit) as cm:
+            self.daemon.restart()
         self.assertTrue(self.daemon.status())
 
     def test_run(self):
@@ -52,7 +55,8 @@ class TestAbstractDaemon(unittest.TestCase):
         """Try to check pid of a stopped daemon.
         """
         self.assertFalse(self.daemon.check_pid())
-        self.daemon.start()
+        with self.assertRaises(SystemExit) as cm:
+            self.daemon.start()
         time.sleep(1)
         self.daemon.stop()
         self.assertFalse(self.daemon.check_pid())
@@ -61,7 +65,8 @@ class TestAbstractDaemon(unittest.TestCase):
     def test_check_pid_started(self):
         """Try to check pid of a started daemon.
         """
-        self.daemon.start()
+        with self.assertRaises(SystemExit) as cm:
+            self.daemon.start()
         self.assertTrue(self.daemon.check_pid())
 
     def test_del_pid(self):
