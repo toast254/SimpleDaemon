@@ -25,6 +25,7 @@ class TestMyDaemon(unittest.TestCase):
         """
         self.assertIsNone(MyDaemon.usage_help())
 
+    @unittest.skip('Too long and equivalent to "test_do_something" test, skipping it...')
     @unittest.skipIf(sys.platform.startswith("win"), "not available on Windows")
     def test_run(self):
         """Try to execute 'run' method from the daemon.
