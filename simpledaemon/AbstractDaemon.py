@@ -2,6 +2,7 @@
 """Generic linux daemon base class for python 3.x."""
 
 import os
+import sys
 import time
 import atexit
 import signal
