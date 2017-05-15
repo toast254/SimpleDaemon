@@ -36,13 +36,13 @@ if __name__ == '__main__':
     daemon = MyDaemon('/tmp/MyDaemon.pid')
     if len(sys.argv) >= 2:
         if 'start' == sys.argv[1]:
-            print('Starting daemon')
+            print('Starting MyDaemon')
             daemon.start()
         elif 'stop' == sys.argv[1]:
-            print('Stopping daemon')
+            print('Stopping MyDaemon')
             daemon.stop()
         elif 'restart' == sys.argv[1]:
-            print('Restarting daemon')
+            print('Restarting MyDaemon')
             daemon.restart()
         elif 'status' == sys.argv[1]:
             if daemon.status():
