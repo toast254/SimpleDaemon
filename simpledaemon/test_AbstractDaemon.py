@@ -3,6 +3,7 @@
 import sys
 import time
 import unittest
+import logging
 from AbstractDaemon import Daemon
 
 
