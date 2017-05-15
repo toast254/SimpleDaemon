@@ -21,6 +21,7 @@ class TestAbstractDaemon(unittest.TestCase):
         """
         with self.assertRaises(SystemExit) as cm:
             self.daemon.start()
+            print(cm)
         self.assertTrue(self.daemon.status())
 
     @unittest.skipIf(sys.platform.startswith("win"), "not available on Windows")
@@ -29,6 +30,7 @@ class TestAbstractDaemon(unittest.TestCase):
         """
         with self.assertRaises(SystemExit) as cm:
             self.daemon.start()
+            print(cm)
         time.sleep(1)
         self.daemon.stop()
         self.assertFalse(self.daemon.status())
@@ -39,6 +41,7 @@ class TestAbstractDaemon(unittest.TestCase):
         """
         with self.assertRaises(SystemExit) as cm:
             self.daemon.restart()
+            print(cm)
         self.assertTrue(self.daemon.status())
 
     def test_run(self):
@@ -57,6 +60,7 @@ class TestAbstractDaemon(unittest.TestCase):
         self.assertFalse(self.daemon.check_pid())
         with self.assertRaises(SystemExit) as cm:
             self.daemon.start()
+            print(cm)
         time.sleep(1)
         self.daemon.stop()
         self.assertFalse(self.daemon.check_pid())
@@ -67,6 +71,7 @@ class TestAbstractDaemon(unittest.TestCase):
         """
         with self.assertRaises(SystemExit) as cm:
             self.daemon.start()
+            print(cm)
         self.assertTrue(self.daemon.check_pid())
 
     def test_del_pid(self):
