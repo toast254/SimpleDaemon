@@ -1,9 +1,14 @@
 language: python
+# define cache
+cache: pip
+before_cache:
+  - rm -f $HOME/.cache/pip/log/debug.log
+# Python version tested
 python:
   - "3.5"
   - "3.6"
   - "nightly" # currently points to 3.7-dev
 # command to install dependencies
-#install: "pip install -r requirements.txt"
+install: "pip install -r requirements.txt"
 # command to run tests
 script: pytest
