@@ -23,7 +23,7 @@ class LaunchAbstractDaemon:
     def restart(self):
         thread = threading.Thread(target=self.daemon.restart, args=())
         thread.daemon = True                            # Daemonize thread
-        thread.restart()  # Start the execution
+        thread.start()  # Start the execution
 
 
 class TestAbstractDaemon(unittest.TestCase):
