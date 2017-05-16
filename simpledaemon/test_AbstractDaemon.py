@@ -6,6 +6,14 @@ import unittest
 from AbstractDaemon import Daemon
 
 
+class NotAbstractDaemon(Daemon):
+    """Subclass of AbstractDaemon
+    """
+    
+    def run(self):
+        pass  # do nothing
+
+    
 class TestAbstractDaemon(unittest.TestCase):
     """Test AbstractDaemon class.
     """
@@ -13,7 +21,7 @@ class TestAbstractDaemon(unittest.TestCase):
     def setUp(self):
         """Create a new Daemon obect.
         """
-        self.daemon = Daemon('/tmp/test.pid')
+        self.daemon = NotAbstractDaemon('/tmp/test.pid')
 
     @unittest.skipIf(sys.platform.startswith("win"), "not available on Windows")
     def test_start(self):
