@@ -13,7 +13,7 @@ class TestAbstractDaemon(unittest.TestCase):
     def setUp(self):
         """Create a new Daemon obect.
         """
-        self.daemon = Daemon('pidfile')
+        self.daemon = Daemon('/tmp/test.pid')
 
     @unittest.skipIf(sys.platform.startswith("win"), "not available on Windows")
     def test_start(self):
