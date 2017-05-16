@@ -42,11 +42,14 @@ class Daemon:
             logger.error('fork #2 failed : ' + str(err))
             sys.exit(1)
         # redirect standard file descriptors
-        sys.stdin.flush()
+        os.setsid()
+        if sys.stdin.isatty():
+            sys.stdin.flush()
         sys.stdout.flush()
         sys.stderr.flush()
         dev_null = os.open(os.devnull, os.O_RDWR)
-        os.dup2(dev_null, sys.stdin.fileno())
+        if sys.stdin.isatty():
+            os.dup2(dev_null, sys.stdin.fileno())
         os.dup2(dev_null, sys.stdout.fileno())
         os.dup2(dev_null, sys.stderr.fileno())
         # write pidfile
