@@ -7,7 +7,7 @@ Easy to use and easy to understand python class to create daemon.
 
 This project provide an abstract class `AbstractDaemon` and a daemon class example.
 
-These Python files can be found in the `simpledaemon` folder. It also contains unit tests.
+These Python files can be found in the [simpledaemon](https://github.com/toast254/SimpleDaemon/tree/master/simpledaemon) folder. It also contains unit tests.
 
 
 ## Dependencies :
