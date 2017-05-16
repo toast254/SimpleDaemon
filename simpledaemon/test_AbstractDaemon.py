@@ -9,11 +9,11 @@ from AbstractDaemon import Daemon
 class NotAbstractDaemon(Daemon):
     """Subclass of AbstractDaemon
     """
-    
+
     def run(self):
         pass  # do nothing
 
-    
+
 class TestAbstractDaemon(unittest.TestCase):
     """Test AbstractDaemon class.
     """
