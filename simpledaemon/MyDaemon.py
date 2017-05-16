@@ -33,7 +33,7 @@ def usage_help():
 
 
 if __name__ == '__main__':
-    daemon = MyDaemon('/tmp/MyDaemon.pid')
+    daemon = MyDaemon('MyDaemon.pid')
     if len(sys.argv) >= 2:
         if 'start' == sys.argv[1]:
             print('Starting MyDaemon')
