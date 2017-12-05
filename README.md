@@ -29,5 +29,3 @@ Please refer to `MyDaemon.py` to understand in details how to get it work.
 
 [![Code Climate](https://codeclimate.com/github/toast254/SimpleDaemon/badges/gpa.svg)](https://codeclimate.com/github/toast254/SimpleDaemon)
 [![Issue Count](https://codeclimate.com/github/toast254/SimpleDaemon/badges/issue_count.svg)](https://codeclimate.com/github/toast254/SimpleDaemon)
-
-[![Code Issues](https://www.quantifiedcode.com/api/v1/project/783b9fed9b084049a721fd322d62738a/badge.svg)](https://www.quantifiedcode.com/app/project/783b9fed9b084049a721fd322d62738a)
